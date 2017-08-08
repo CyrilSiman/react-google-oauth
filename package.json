@@ -1,0 +1,26 @@
+{
+  "name": "react-google-oauth",
+  "version": "1.0.0",
+  "description": "A Google OAuth component for React",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CyrilSiman/react-google-oauth.git"
+  },
+  "keywords": [
+    "React",
+    "Google",
+    "Oauth",
+    "Login",
+    "Logout"
+  ],
+  "author": "Cyril Siman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CyrilSiman/react-google-oauth/issues"
+  },
+  "homepage": "https://github.com/CyrilSiman/react-google-oauth#readme"
+}
