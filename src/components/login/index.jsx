@@ -67,9 +67,9 @@ class GoogleLogin extends Component {
 
     const Tag = tag
 
-    return <button onClick={this.signIn} disabled={disabled} className="react-google-oauth-button-login">
+    return <Tag onClick={this.signIn} disabled={disabled} className="react-google-oauth-button-login">
             {children ? children : buttonText}
-           </button>
+           </Tag>
 
   }
 }
