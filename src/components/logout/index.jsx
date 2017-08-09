@@ -41,7 +41,7 @@ class GoogleLogout extends Component {
 
     const Tag = tag
 
-    return <Tag onClick={this.signOut} disabled={disabled} className="react-google-oauth-button-login">
+    return <Tag onClick={this.signOut} disabled={disabled} className="react-google-oauth-button-logout">
             {children ? children : buttonText}
         </Tag>
   }
