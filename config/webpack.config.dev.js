@@ -1,31 +1,20 @@
+const autoprefixer = require('autoprefixer');
 const path = require('path');
 const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   devtool: 'cheap-module-source-map',
-  entry: {
-    demo: [
-      'webpack/hot/dev-server',
-      './demo/index.js',
-    ],
-  },
+  entry: './src/index.jsx',
   output: {
-    path: paths.appBuild,
-    // Add /* filename */ comments to generated require()s in the output.
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, '../build/'),
+    // include comments in bundles with information about the contained modules
     pathinfo: true,
-    // This does not produce a real file. It's just the virtual path that is
-    // served by WebpackDevServer in development. This is the JS bundle
-    // containing code from all our entry points, and the Webpack runtime.
-    filename: 'static/js/bundle.js',
-    // This is the URL that app is served from. We use "/" in development.
-    publicPath: publicPath,
-    
-    //path: path.join(__dirname, 'demo'),
-    //filename: 'bundle.js',
-    //publicPath: '/',
+    publicPath: '/'
   },
   module: {
+    //makes missing exports an error instead of warning
     strictExportPresence: true,
     
     rules: [
@@ -36,14 +25,10 @@ module.exports = {
         enforce: 'pre',
         use: [
           {
-            options: {
-              formatter: eslintFormatter,
-              
-            },
             loader: require.resolve('eslint-loader'),
           },
         ],
-        include: paths.appSrc,
+        exclude: /node_modules/,
       },
       // ** ADDING/UPDATING LOADERS **
       // The "file" loader handles all assets unless explicitly excluded.
@@ -73,10 +58,11 @@ module.exports = {
       // Process JS with Babel.
       {
         test: /\.(js|jsx)$/,
-        include: paths.appSrc,
+        exclude: /node_modules/,
         loader: require.resolve('babel-loader'),
         options: {
-          
+          presets: ['env'],
+          plugins: [require('babel-plugin-transform-object-rest-spread')],
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
@@ -91,7 +77,7 @@ module.exports = {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-              modules: true,
+              modules: false,
               localIdentName: "[name]__[local]___[hash:base64:5]"
             },
           },
@@ -125,28 +111,17 @@ module.exports = {
     ],
   },
   plugins: [
-    // Add module names to factory functions so they appear in browser profiler.
+    // Add module names to factory functions so they appear in browser profiler on dev env.
     new webpack.NamedModulesPlugin(),
-    // Makes some environment variables available to the JS code, for example:
-    // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
-    new webpack.DefinePlugin(env.stringified),
     // This is necessary to emit hot updates (currently CSS only):
     new webpack.HotModuleReplacementPlugin(),
     // Watcher doesn't work well if you mistype casing in a path so we use
     // a plugin that prints an error when you attempt to do this.
-    // See https://github.com/facebookincubator/create-react-app/issues/240
     new CaseSensitivePathsPlugin(),
-    // If you require a missing module and then `npm install` it, you still have
-    // to restart the development server for Webpack to discover it. This plugin
-    // makes the discovery automatic so you don't have to restart.
-    // See https://github.com/facebookincubator/create-react-app/issues/186
-    new WatchMissingNodeModulesPlugin(paths.appNodeModules),
   ],
   resolve: {
-    extensions: ['.js','*.jsx'],
+    extensions: ['.js','.jsx'],
   },
-  // splitting or minification in interest of speed. These warnings become
-  // cumbersome.
   performance: {
     hints: false,
   }

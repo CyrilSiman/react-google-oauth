@@ -1,6 +1,6 @@
 import _GoogleAPI from './services/'
-import _GoogleLogin from './components/Login/'
-import _GoogleLogout from './components/Logout/'
+import _GoogleLogin from './components/login/'
+import _GoogleLogout from './components/logout/'
 
 export const GoogleAPI = _GoogleAPI
 export const GoogleLogin = _GoogleLogin
