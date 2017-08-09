@@ -1,0 +1,27 @@
+.react-google-oauth-button-login  {
+      display: inline-block;
+      background-color: #d14836;
+      color: #fff;
+      width: 190px;
+      padding-top: 10px; 
+      padding-Bottom: 10px;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: 'Roboto'
+}
+
+.react-google-oauth-button-logout  {
+      display: inline-block;
+      background-color: green;
+      color: #fff;
+      width: 190px;
+      padding-top: 10px; 
+      padding-Bottom: 10px;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      font-size: 16px;
+      font-weight: bold;
+      font-family: 'Roboto'
+}
