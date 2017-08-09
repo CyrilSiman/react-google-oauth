@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant'
 
 const insertGoogleScript = (document, parentTag, id, handleClientLoad) => {
       const element = document.getElementsByTagName(parentTag)[0];
@@ -49,6 +50,18 @@ const initGoogleClientAPIFailure =  err =>
     console.error(err)
 
 class GoogleAPI extends Component {
+
+    
+    componentWillMount() {
+
+        const {children} = this.props
+
+        invariant(
+            children == null || React.Children.count(children) === 1,
+            'A <GoogleAPI> may have only one child element'
+        )
+    }
+
 
   componentDidMount() {
 
