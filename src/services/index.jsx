@@ -50,8 +50,13 @@ const initGoogleClientAPIFailure =  err =>
     console.error(err)
 
 class GoogleAPI extends Component {
-
     
+    getChildContext() {
+        return {
+            reactGoogleApi : true
+        }
+    }
+
     componentWillMount() {
 
         const {children} = this.props
@@ -63,23 +68,27 @@ class GoogleAPI extends Component {
     }
 
 
-  componentDidMount() {
+    componentDidMount() {
 
-    const onUpdateSigninStatus = this.props.onUpdateSigninStatus ? this.props.onUpdateSigninStatus : f => f
-    const onInitFailure = this.props.onFailure ? this.props.onInitFailure : initGoogleClientAPIFailure
+        const onUpdateSigninStatus = this.props.onUpdateSigninStatus ? this.props.onUpdateSigninStatus : f => f
+        const onInitFailure = this.props.onFailure ? this.props.onInitFailure : initGoogleClientAPIFailure
 
-    const params = makeGoogleParams(this.props)
+        const params = makeGoogleParams(this.props)
 
-    const initClient = initGoogleClientAPI(params,onUpdateSigninStatus,onInitFailure)
-    const initGoogleApi = handleClientLoad(initClient)
-    
-    insertGoogleScript(document, 'script', 'google-login', initGoogleApi);
-  }
+        const initClient = initGoogleClientAPI(params,onUpdateSigninStatus,onInitFailure)
+        const initGoogleApi = handleClientLoad(initClient)
+        
+        insertGoogleScript(document, 'script', 'google-login', initGoogleApi);
+    }
 
-  render() {
-    const { children } = this.props
-    return children ? React.Children.only(children) : null
-  }
+    render() {
+        const { children } = this.props
+        return children ? React.Children.only(children) : null
+    }
+}
+
+GoogleAPI.childContextTypes = {
+    reactGoogleApi : PropTypes.bool
 }
 
 GoogleAPI.propTypes = {

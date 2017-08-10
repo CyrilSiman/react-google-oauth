@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant'
 import '../../styles.css'
 
 class GoogleLogin extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props,context) {
+    super(props,context);
     this.signIn = this.signIn.bind(this);
+  }
+
+  componentWillMount() {
+    console.log(this.context)
+    invariant(
+            this.context.reactGoogleApi,
+            'A <GoogleLogin> can be used only as child or descendant of <GoogleApi> '
+        )
   }
 
   signIn(e) {
@@ -72,6 +81,10 @@ class GoogleLogin extends Component {
            </Tag>
 
   }
+}
+
+GoogleLogin.contextTypes = {
+  reactGoogleApi : PropTypes.bool
 }
 
 GoogleLogin.propTypes = {

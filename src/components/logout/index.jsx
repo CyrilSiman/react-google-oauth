@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import invariant from 'invariant'
 import '../../styles.css'
 
 class GoogleLogout extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props,context) {
+    super(props,context);
     this.signOut = this.signOut.bind(this);
+  }
+
+  componentWillMount() {
+    invariant(
+            this.context.reactGoogleApi,
+            'A <GoogleLogout> can be used only as child or descendant of <GoogleApi> '
+        )
   }
 
   signOut(e) {
@@ -45,6 +53,9 @@ class GoogleLogout extends Component {
             {children ? children : buttonText}
         </Tag>
   }
+}
+GoogleLogout.contextTypes = {
+  reactGoogleApi : PropTypes.bool
 }
 
 GoogleLogout.propTypes = {
