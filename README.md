@@ -8,17 +8,28 @@ With react-google-oauth you can quickly and easly add Login and Logout Google bu
 
 ![Default Login button](https://i.imgur.com/9TYFPZf.png)
 
+# How it works
+
+This module is composed by two kind of components :
+
+- <GoogleApi> used to inject and initialize the Google Api with your Google Api Key
+- <GoogleLogin> <GoogleLogout> <CustomGoogleLogin> <CustomGoogleLogout> components used to display buttons and connect each *clickEvents* to Google Oauth Api.
+
 # Install
 
 ```bash
 npm install react-google-oauth
 ```
 
+# How use it
+
 
 
 # Rendering
 
-Without any parametres
+## \<GoogleLogin> & \<GoogleLogout>
+
+Without parameters, buttons look like this :
 
 ```
 <GoogleLogin />
@@ -45,7 +56,7 @@ With pre-define rendering you can only change the text, the  width and the backg
 
 **Login button**
 
-| Parameter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      | Default value       |
+| Parameter       | Default value       |
 | --------------- | ------------------- |
 | text            | Sign in with Google |
 | width           | 240px               |
@@ -53,9 +64,7 @@ With pre-define rendering you can only change the text, the  width and the backg
 
 **Logout button**
 
-
-
-| Parameter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Default value |
+| Parameter       | Default value |
 | --------------- | ------------- |
 | text            | Sign out      |
 | width           | 180px         |
