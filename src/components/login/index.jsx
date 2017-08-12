@@ -55,11 +55,12 @@ class GoogleLogin extends Component {
   render() {
 
     return renderDefaultButton({
-      buttonText: this.props.buttonText,
+      text: this.props.text,
       backgroundColor: this.props.backgroundColor,
       disabled: this.props.disabled,
       className: "react-google-oauth-button-login",
-      onClickFunc: this.signIn
+      onClickFunc: this.signIn,
+      width:this.props.width
     })
   }
 }
@@ -72,17 +73,17 @@ GoogleLogin.propTypes = {
   onLoginSuccess: PropTypes.func,
   onLoginFailure: PropTypes.func,
   onRequest: PropTypes.func,
-  buttonText: PropTypes.string,
+  text: PropTypes.string,
   children: PropTypes.node,
-  disabled: PropTypes.bool
+  disabled: PropTypes.bool,
+  width: PropTypes.string
 };
 
 GoogleLogin.defaultProps = {
   onLoginFailure: f => f,
   onLoginSuccess: f => f,
   onRequest: f => f,
-  tag: 'button',
-  buttonText: 'Sign in with Google',
+  text: 'Sign in with Google',
   scope: 'profile email',
   responseType: 'permission',
   prompt: '',

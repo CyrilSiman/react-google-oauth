@@ -29,7 +29,6 @@
 .react-google-oauth-button-main  {
       display: inline-block;
       color: #fff;
-      width: 240px;
       height: 50px;
       padding: 0px; 
       border-radius: 1px;
@@ -40,8 +39,10 @@
 
 .react-google-oauth-button-login {
       background-color: #4285f4;
+      width: 240px;
 }
 
 .react-google-oauth-button-logout  {
       background-color: green;
+      width: 180px;
 }

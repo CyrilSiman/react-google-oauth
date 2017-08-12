@@ -1,12 +1,13 @@
 import React from 'react'
 
-export const renderDefaultButton = ({ disabled, buttonText, backgroundColor, className, onClickFunc }) => {
+export const renderDefaultButton = ({ width, disabled, text, backgroundColor, className, onClickFunc }) => {
 
     //const { buttonText, backgroundColor } = this.props;
     //const disabled = this.props.disabled;
 
     const func = disabled ? null : onClickFunc
-    const style = backgroundColor ? { backgroundColor: backgroundColor } : {}
+    let style = backgroundColor ? { backgroundColor: backgroundColor } : {}
+    style = width ?  {...style,width} : style
 
     const classNameTmp = `react-google-oauth-button-main ${className}`
 
@@ -23,7 +24,7 @@ export const renderDefaultButton = ({ disabled, buttonText, backgroundColor, cla
                             <path fill="none" d="M0 0h48v48H0z"></path></g></svg>
                 </div>
             </div>
-            <span className="react-google-oauth-button-span">{buttonText}</span>
+            <span className="react-google-oauth-button-span">{text}</span>
         </div>
     </div>
 }
