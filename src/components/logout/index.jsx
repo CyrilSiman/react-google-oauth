@@ -47,19 +47,7 @@ class GoogleLogout extends Component {
         );
     }
   }
-
-  /*
-  render() {
-    const { tag, style, className, disabledStyle, buttonText, children } = this.props;
-    const disabled = this.props.disabled;
-
-    const Tag = tag
-
-    return <Tag onClick={this.signOut} disabled={disabled} className="react-google-oauth-button-logout">
-            {children ? children : buttonText}
-        </Tag>
-  }*/
-
+  
   render() {
 
     return renderDefaultButton({
@@ -80,12 +68,7 @@ GoogleLogout.propTypes = {
   onLogoutFailure: PropTypes.func,
   onRequest: PropTypes.func,
   buttonText: PropTypes.string,
-  className: PropTypes.string,
-  loginHint: PropTypes.string,
   children: PropTypes.node,
-  style: PropTypes.object,
-  disabledStyle: PropTypes.object,
-  tag: PropTypes.string,
   disabled: PropTypes.bool,
 };
 
@@ -93,11 +76,7 @@ GoogleLogout.defaultProps = {
   onLogoutSuccess: f => f,
   onLogoutFailure: f => f,
   onRequest: f => f,
-  tag: 'button',
-  buttonText: 'Login with Google',
-  disabledStyle: {
-    opacity: 0.6,
-  }
+  buttonText: 'Sign out',
 };
 
 export default GoogleLogout;
