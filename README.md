@@ -18,22 +18,44 @@ npm install react-google-oauth
 
 # Rendering
 
-## Pre-define
+Without any parametres
 
-With pre-define rendering you can only change the text and the background color.
-
-### Default rendering
-
-
-
-```jsx
-<GoogleLogin backgroundColor="red" test="connect" />
+```
+<GoogleLogin />
+<GoogleLogout />
 ```
 
+![Default Login button](https://i.imgur.com/9TYFPZf.png) ![](https://i.imgur.com/6Sb0kUy.png)
 
+## Text, Color, Width
 
-Default values : 
+With pre-define rendering you can only change the text, the  width and the background color.
 
-text = Sign in with Google
+*Sample*
 
-backgroundColor = #4285f4
+```jsx
+<GoogleLogin 
+  	backgroundColor="#A31515" 
+  	text="login"
+  	width="180px"
+  	/>
+```
+
+![](https://i.imgur.com/3LD3FTF.png)
+
+**Login button**
+
+| Parameter       | Default value       |
+| --------------- | ------------------- |
+| text            | Sign in with Google |
+| width           | 240px               |
+| backgroundColor | \#4285f4            |
+
+**Logout button**
+
+| Parameter       | Default value |
+| --------------- | ------------- |
+| text            | Sign out      |
+| width           | 180px         |
+| backgroundColor | \#A31515      |
+
