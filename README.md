@@ -45,7 +45,7 @@ With pre-define rendering you can only change the text, the  width and the backg
 
 **Login button**
 
-| Parameter       | Default value       |
+| Parameter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      | Default value       |
 | --------------- | ------------------- |
 | text            | Sign in with Google |
 | width           | 240px               |
@@ -53,7 +53,9 @@ With pre-define rendering you can only change the text, the  width and the backg
 
 **Logout button**
 
-| Parameter       | Default value |
+
+
+| Parameter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Default value |
 | --------------- | ------------- |
 | text            | Sign out      |
 | width           | 180px         |
