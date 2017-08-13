@@ -36,7 +36,7 @@ Without parameters, buttons look like this :
 <GoogleLogout />
 ```
 
-![Default Login button](https://i.imgur.com/9TYFPZf.png) ![](https://i.imgur.com/6Sb0kUy.png)
+![](https://i.imgur.com/LvEQ6yz.png) ![](https://i.imgur.com/SiR83vT.png)
 
 ## Text, Color, Width
 
