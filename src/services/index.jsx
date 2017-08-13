@@ -31,17 +31,16 @@ const initGoogleClientAPI = (params,onUpdateSigninStatus,onInitFailure) => () =>
 }
 
 const makeGoogleParams = (props) => {
-    const { clientId, cookiePolicy, loginHint, hostedDomain, fetchBasicProfile, redirectUri, discoveryDocs, uxMode } = props
+    const { clientId, cookiePolicy, hostedDomain, fetchBasicProfile, redirectUri, uxMode, scope } = props
 
     return ({
         client_id: clientId,
         cookiepolicy: cookiePolicy,
-        login_hint: loginHint,
         hosted_domain: hostedDomain,
         fetch_basic_profile: fetchBasicProfile,
-        discoveryDocs,
         ux_mode: uxMode,
-        redirect_uri: redirectUri
+        redirect_uri: redirectUri,
+        scope
     })
 }
 
@@ -94,19 +93,15 @@ GoogleAPI.propTypes = {
   onUpdateSigninStatus: PropTypes.func,
   onInitFailure: PropTypes.func,
   clientId: PropTypes.string.isRequired,
-  onRequest: PropTypes.func,
   scope: PropTypes.string,
   redirectUri: PropTypes.string,
   cookiePolicy: PropTypes.string,
-  loginHint: PropTypes.string,
   hostedDomain: PropTypes.string,
-  children: PropTypes.node,
   fetchBasicProfile: PropTypes.bool,
   prompt: PropTypes.string,
-  autoLoad: PropTypes.bool,
-  discoveryDocs: PropTypes.array,
   responseType: PropTypes.string,
-  uxMode: PropTypes.string
+  uxMode: PropTypes.string,
+  children: PropTypes.node,
 };
 
 GoogleAPI.defaultProps = {
@@ -116,7 +111,6 @@ GoogleAPI.defaultProps = {
   cookiePolicy: 'single_host_origin',
   fetchBasicProfile: true,
   uxMode: 'popup',
-  onRequest: () => {},
 };
 
 export default GoogleAPI;
