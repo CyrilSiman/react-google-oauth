@@ -6,7 +6,7 @@
 
 With react-google-oauth you can quickly and easly add Login and Logout Google button.
 
-![Default Login button](https://i.imgur.com/9TYFPZf.png)
+![Google button with hover state](https://i.imgur.com/PDgUgJW.gif)
 
 # How it works
 
