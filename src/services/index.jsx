@@ -67,7 +67,6 @@ class GoogleAPI extends Component {
         )
     }
 
-
     componentDidMount() {
 
         const onUpdateSigninStatus = this.props.onUpdateSigninStatus ? this.props.onUpdateSigninStatus : f => f

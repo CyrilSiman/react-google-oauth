@@ -42,6 +42,11 @@
       opacity: 0.5;
 }
 
+.react-google-oauth-button-main:active {
+      filter: brightness(80%);
+      opacity: 1;
+}
+
 .react-google-oauth-button-login {
       background-color: #4285f4;
       width: 240px;
