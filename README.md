@@ -12,7 +12,7 @@ With react-google-oauth you can quickly and easly add Login and Logout Google bu
 
 This module is composed by two kind of components :
 
-- \<GoogleApi> used to inject and initialize the Google Api with your Google Api Key
+- \<GoogleAPI> used to inject and initialize the Google Api with your Google client ID, follow this <a href="https://developers.google.com/identity/sign-in/web/devconsole-project" >Google's documentation to get yours</a>
 - \<GoogleLogin> \<GoogleLogout> \<CustomGoogleLogin> \<CustomGoogleLogout> components used to display buttons and connect each *clickEvents* to Google Oauth Api.
 
 # Install
@@ -23,7 +23,52 @@ npm install react-google-oauth
 
 # How use it
 
+**1°) Inject and init Google API script**
 
+Add \<GoogleAPI> component in your tree
+
+```jsx
+import {GoogleAPI} from 'react-google-oauth'
+
+ReactDOM.render(
+        <GoogleAPI clientId="YOUR CLIENT ID"
+            onUpdateSigninStatus={CALLBACK}
+            onInitFailure={CALLBACK} >
+         	<YourApp />
+        </GoogleAPI>, document.getElementById('root'));
+```
+
+Is this sample \<GoogleAPI> is used as Root node but maybe used where you which.
+
+**Attention** : As other React component \<GoogleAPI> can have only one child
+
+**2°) Add a button**
+
+Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
+
+
+
+scope: 'profile email',
+
+responseType: 'permission',
+
+prompt: '',
+
+cookiePolicy: 'single_host_origin',
+
+fetchBasicProfile: true,
+
+uxMode: 'popup',
+
+onRequest: f => f
+
+# 
+
+
+
+onLoginSuccess={responseGoogle}
+
+​                onLoginFailure=
 
 # Rendering
 
@@ -36,7 +81,7 @@ Without parameters, buttons look like this :
 <GoogleLogout />
 ```
 
-![](https://i.imgur.com/LvEQ6yz.png) ![](https://i.imgur.com/SiR83vT.png)
+![GoogleLogin button](https://i.imgur.com/LvEQ6yz.png) ![GoogleLogout button](https://i.imgur.com/SiR83vT.png)
 
 ## Text, Color, Width
 
@@ -52,7 +97,7 @@ With pre-define rendering you can only change the text, the  width and the backg
   	/>
 ```
 
-![](https://i.imgur.com/3LD3FTF.png)
+![Red GoogleLogin button](https://i.imgur.com/3LD3FTF.png)
 
 **Login button**
 
