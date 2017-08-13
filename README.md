@@ -12,8 +12,8 @@ With react-google-oauth you can quickly and easly add Login and Logout Google bu
 
 This module is composed by two kind of components :
 
-- <GoogleApi> used to inject and initialize the Google Api with your Google Api Key
-- <GoogleLogin> <GoogleLogout> <CustomGoogleLogin> <CustomGoogleLogout> components used to display buttons and connect each *clickEvents* to Google Oauth Api.
+- \<GoogleApi> used to inject and initialize the Google Api with your Google Api Key
+- \<GoogleLogin> \<GoogleLogout> \<CustomGoogleLogin> \<CustomGoogleLogout> components used to display buttons and connect each *clickEvents* to Google Oauth Api.
 
 # Install
 
