@@ -1,40 +1,45 @@
-.react-google-oauth-button-span  {
+.react-google-oauth-button-span {
       margin-left: 6px;
       margin-right: 6px;
       vertical-align: top;
       font-size: 16px;
       font-weight: 500;
-      font-family: Roboto,arial,sans-serif;
+      font-family: Roboto, arial, sans-serif;
       letter-spacing: .21px;
       line-height: 48px;
 }
 
-.react-google-oauth-button-icon  {
+.react-google-oauth-button-icon {
       width: 18px;
       height: 18px;
 }
 
-.react-google-oauth-button-iconWrapper  {
+.react-google-oauth-button-iconWrapper {
       padding: 15px;
       background-color: white;
       float: left;
 }
 
-.react-google-oauth-button-border  {
+.react-google-oauth-button-border {
       border: 1px solid transparent;
       height: 100%;
       width: 100%;
 }
 
-.react-google-oauth-button-main  {
+.react-google-oauth-button-main {
       display: inline-block;
       color: #fff;
       height: 50px;
-      padding: 0px; 
+      padding: 0px;
       border-radius: 1px;
       border: none;
-      cursor :pointer;
+      cursor: pointer;
       text-align: center;
+      transition: all 0.4s
+}
+
+.react-google-oauth-button-main:hover {
+      opacity: 0.5;
 }
 
 .react-google-oauth-button-login {
@@ -42,7 +47,9 @@
       width: 240px;
 }
 
-.react-google-oauth-button-logout  {
+.react-google-oauth-button-logout {
       background-color: green;
       width: 180px;
 }
+
+
