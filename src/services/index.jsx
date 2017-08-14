@@ -97,22 +97,22 @@ GoogleAPI.propTypes = {
     onInitFailure: PropTypes.func,
     clientId: PropTypes.string.isRequired,
     scope: PropTypes.string,
-    redirectUri: PropTypes.string,
     cookiePolicy: PropTypes.string,
-    hostedDomain: PropTypes.string,
+    responseType: PropTypes.string,
     fetchBasicProfile: PropTypes.bool,
     prompt: PropTypes.string,
-    responseType: PropTypes.string,
     uxMode: PropTypes.string,
+    hostedDomain: PropTypes.string,
+    redirectUri: PropTypes.string,
     children: PropTypes.node,
 };
 
 GoogleAPI.defaultProps = {
     scope: 'profile email',
-    responseType: 'permission',
-    prompt: '',
     cookiePolicy: 'single_host_origin',
+    responseType: 'permission',
     fetchBasicProfile: true,
+    prompt: '',
     uxMode: 'popup',
 };
 
