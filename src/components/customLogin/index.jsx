@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant'
-import '../../styles.css'
+import { renderCustomDefaultButton } from '../'
 
 class CustomGoogleLogin extends Component {
   constructor(props, context) {
@@ -48,18 +48,14 @@ class CustomGoogleLogin extends Component {
   }
 
   render() {
-    const { tag, className, text, children } = this.props;
-    const disabled = this.props.disabled;
-
-    const Tag = tag
-
-    return tag === "a" ?
-      <Tag href="javacript:void(0)" onClick={this.signIn} disabled={disabled} className={className} >
-        {children ? children : text}
-      </Tag>
-      : <Tag onClick={this.signIn} disabled={disabled} className={className} >
-        {children ? children : text}
-      </Tag>
+    return renderCustomDefaultButton({
+      tag: this.props.tag,
+      className: this.props.className,
+      text: this.props.text,
+      disabled: this.props.disabled,
+      children: this.props.children,
+      onClickFunc: this.signIn
+    })
   }
 }
 

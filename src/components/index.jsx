@@ -28,3 +28,16 @@ export const renderDefaultButton = ({ width, disabled, text, backgroundColor, cl
         </div>
     </div>
 }
+
+export const renderCustomDefaultButton = ({ tag, className, text, disabled, children, onClickFunc }) => {
+    
+    const Tag = tag
+
+    return tag === "a" ?
+      <Tag href="javacript:void(0)" onClick={onClickFunc} disabled={disabled} className={className} >
+        {children ? children : text}
+      </Tag>
+      : <Tag onClick={onClickFunc} disabled={disabled} className={className} >
+        {children ? children : text}
+      </Tag>
+}
