@@ -2,24 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant'
 
-const insertGoogleScript = (document, parentTag, id, handleClientLoad) => {
-      const element = document.getElementsByTagName(parentTag)[0];
-      const fjs = element;
-      let js = element;
-      js = document.createElement(parentTag);
-      js.id = id;
-      js.src = '//apis.google.com/js/client:platform.js';
-      fjs.parentNode.insertBefore(js, fjs);
-      js.onload = handleClientLoad;
+const insertGoogleScript = (documentRoot, id, handleClientLoad) => {
+    //Check if script already present
+    if (!documentRoot.getElementById(id)) {
+        const firstScriptTag = documentRoot.getElementsByTagName('script')[0];
+        const scriptTag = documentRoot.createElement('script');
+        scriptTag.async = 'async'
+        scriptTag.defer = 'defer'
+        scriptTag.id = id;
+        scriptTag.src = '//apis.google.com/js/client:platform.js';
+        scriptTag.onload = handleClientLoad;
+        firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
+    }
 }
 
 // Loads auth2 library
-const  handleClientLoad = (initGoogleClient) => () =>
+const handleClientLoad = (initGoogleClient) => () =>
     window.gapi.load('auth2', initGoogleClient);
-    
-const initGoogleClientAPI = (params,onUpdateSigninStatus,onInitFailure) => () => {
 
-    const auth2 =  window.gapi.auth2
+const initGoogleClientAPI = (params, onUpdateSigninStatus, onInitFailure) => () => {
+
+    const auth2 = window.gapi.auth2
     auth2.init(params).then(
         () => {
             // Listen for sign-in state changes.
@@ -45,20 +48,20 @@ const makeGoogleParams = (props) => {
 }
 
 //The function called if the Google libraries failed to load.
-const initGoogleClientAPIFailure =  err =>
+const initGoogleClientAPIFailure = err =>
     console.error(err)
 
 class GoogleAPI extends Component {
-    
+
     getChildContext() {
         return {
-            reactGoogleApi : true
+            reactGoogleApi: true
         }
     }
 
     componentWillMount() {
 
-        const {children} = this.props
+        const { children } = this.props
 
         invariant(
             children == null || React.Children.count(children) === 1,
@@ -73,10 +76,10 @@ class GoogleAPI extends Component {
 
         const params = makeGoogleParams(this.props)
 
-        const initClient = initGoogleClientAPI(params,onUpdateSigninStatus,onInitFailure)
+        const initClient = initGoogleClientAPI(params, onUpdateSigninStatus, onInitFailure)
         const initGoogleApi = handleClientLoad(initClient)
-        
-        insertGoogleScript(document, 'script', 'google-login', initGoogleApi);
+
+        insertGoogleScript(document, 'react-google-oauth-id', initGoogleApi);
     }
 
     render() {
@@ -86,31 +89,31 @@ class GoogleAPI extends Component {
 }
 
 GoogleAPI.childContextTypes = {
-    reactGoogleApi : PropTypes.bool
+    reactGoogleApi: PropTypes.bool
 }
 
 GoogleAPI.propTypes = {
-  onUpdateSigninStatus: PropTypes.func,
-  onInitFailure: PropTypes.func,
-  clientId: PropTypes.string.isRequired,
-  scope: PropTypes.string,
-  redirectUri: PropTypes.string,
-  cookiePolicy: PropTypes.string,
-  hostedDomain: PropTypes.string,
-  fetchBasicProfile: PropTypes.bool,
-  prompt: PropTypes.string,
-  responseType: PropTypes.string,
-  uxMode: PropTypes.string,
-  children: PropTypes.node,
+    onUpdateSigninStatus: PropTypes.func,
+    onInitFailure: PropTypes.func,
+    clientId: PropTypes.string.isRequired,
+    scope: PropTypes.string,
+    redirectUri: PropTypes.string,
+    cookiePolicy: PropTypes.string,
+    hostedDomain: PropTypes.string,
+    fetchBasicProfile: PropTypes.bool,
+    prompt: PropTypes.string,
+    responseType: PropTypes.string,
+    uxMode: PropTypes.string,
+    children: PropTypes.node,
 };
 
 GoogleAPI.defaultProps = {
-  scope: 'profile email',
-  responseType: 'permission',
-  prompt: '',
-  cookiePolicy: 'single_host_origin',
-  fetchBasicProfile: true,
-  uxMode: 'popup',
+    scope: 'profile email',
+    responseType: 'permission',
+    prompt: '',
+    cookiePolicy: 'single_host_origin',
+    fetchBasicProfile: true,
+    uxMode: 'popup',
 };
 
 export default GoogleAPI;
