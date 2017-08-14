@@ -28,25 +28,21 @@ npm install react-google-oauth
 Add \<GoogleAPI> component in your tree
 
 ```jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {GoogleAPI} from 'react-google-oauth'
 
 ReactDOM.render(
         <GoogleAPI clientId="YOUR CLIENT ID"
-            onUpdateSigninStatus={CALLBACK}
-            onInitFailure={CALLBACK} >
+            onUpdateSigninStatus={Function}
+            onInitFailure={Function} >
          	<YourApp />
         </GoogleAPI>, document.getElementById('root'));
 ```
 
-Is this sample \<GoogleAPI> is used as Root node but maybe used where you which.
+By default the Google API is initialize to make a simple Oauth with profile...
 
 **Attention** : As other React component \<GoogleAPI> can have only one child
-
-**2°) Add a button**
-
-Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
-
-
 
 scope: 'profile email',
 
@@ -60,15 +56,35 @@ fetchBasicProfile: true,
 
 uxMode: 'popup',
 
-onRequest: f => f
-
-# 
 
 
+**2°) Add a button**
 
-onLoginSuccess={responseGoogle}
+Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
 
-​                onLoginFailure=
+```Jsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {GoogleAPI,GoogleLogin,GoogleLogout} from 'react-google-oauth'
+
+ReactDOM.render(
+        <GoogleAPI clientId="YOUR CLIENT ID"
+            onUpdateSigninStatus={CALLBACK}
+            onInitFailure={CALLBACK} >
+			<div>
+              	<div><GoogleLogin /></div>
+              	<div><GoogleLogout /></div>
+    		</div>
+        </GoogleAPI>, document.getElementById('root'));
+```
+
+onLoginSuccess: function called when the authentification is done. Often it's more preferable to use onUpdateSigninStatus from \<GoogleAPI>
+
+onLoginFailure: function called when a error occured. By example when a user closed the Google's popup before choice an account. This function take an object containing an error property. See <a href="https://developers.google.com/identity/sign-in/web/reference#googleauthsigninoptions" >Error Code</a> on Google's documentation for more details.
+
+onRequest : called just before the call to Google Api Script, you can used this callback to display a loader by example. None parameter is send.
+
+
 
 # Rendering
 
@@ -98,6 +114,8 @@ With pre-define rendering you can only change the text, the  width and the backg
 ```
 
 ![Red GoogleLogin button](https://i.imgur.com/3LD3FTF.png)
+
+*Hover and active state are automaticaly generate (opacity 50% for Hover state and filter:brightness(80%) for active state.)*
 
 **Login button**
 
