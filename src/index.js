@@ -1,10 +1,12 @@
 import _GoogleAPI from './services/index.jsx'
 import _GoogleLogin from './components/login/'
 import _GoogleLogout from './components/logout/'
+import _CustomGoogleLogin from './components/customLogin/'
 
 export const GoogleAPI = _GoogleAPI
 export const GoogleLogin = _GoogleLogin
 export const GoogleLogout = _GoogleLogout
+export const CustomGoogleLogin = _CustomGoogleLogin
 
 export const googleGetAuthResponse =  () => {
     let returnObj =  {}
