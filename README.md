@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/react-google-oauth.svg)](https://badge.fury.io/js/react-google-oauth)
+
 # react-google-oauth
 
 *Directly inspired from [react-google-login](https://github.com/anthonyjgrove/react-google-login) project.*
