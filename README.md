@@ -8,10 +8,6 @@ With react-google-oauth you can quickly and easly add Login and Logout Google bu
 
 
 
-
-
-
-
 # How it works
 
 This module is composed by two kind of components :
@@ -27,7 +23,7 @@ npm install react-google-oauth
 
 # How use it
 
-### 1°) Inject and init Google API script
+## 1°) Inject and init Google API script
 
 Add \<GoogleAPI> component in your tree
 
@@ -48,7 +44,7 @@ By default the Google API is initialize to make a simple Oauth with profile...
 
 **Caution** : As other React component \<GoogleAPI> can have only one child
 
-#### GooleApi props
+### GooleApi props
 
 See [Google documentation](https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig) for complet values
 
@@ -66,19 +62,23 @@ See [Google documentation](https://developers.google.com/api-client-library/java
 | onUpdateSigninStatus | f => f                    | See below                                | Func   |
 | onInitFailure        | err => console.error(err) | See below                                | Func   |
 
-##### onUpdateSigninStatus  - Callback
+
+
+#### onUpdateSigninStatus  - Callback
 
 [Doc](https://developers.google.com/api-client-library/javascript/reference/referencedocs#googleauthissignedinlistenlistener) : listen for changes in the current user's sign-in state
 
 A function that takes a boolean value. Passes `true` to this function when the user signs in, and `false` when the user signs out.
 
-##### onInitFailure - Callback
+
+
+#### onInitFailure - Callback
 
 The function called with an object containing an `error` property, if `GoogleAuth` failed to initialize
 
 
 
-### 2°) Add a button
+## 2°) Add a button
 
 Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
 
@@ -98,7 +98,9 @@ ReactDOM.render(
         </GoogleAPI>, document.getElementById('root'));
 ```
 
-#### GoogleLogin params
+
+
+### GoogleLogin params
 
 | Callback                 | Default value          | Comment                                  |
 | ------------------------ | ---------------------- | ---------------------------------------- |
@@ -110,7 +112,9 @@ ReactDOM.render(
 | disabled                 | False                  | See Rendering paragraph                  |
 | width                    | 240px                  | See Rendering paragraph                  |
 
-#### GoogleLogout params
+
+
+### GoogleLogout params
 
 | Callback               | Default value          | Comment                                  |
 | ---------------------- | ---------------------- | ---------------------------------------- |
@@ -121,6 +125,10 @@ ReactDOM.render(
 | backgroundColor        | \#4285f4               | See Rendering paragraph                  |
 | disabled               | False                  | See Rendering paragraph                  |
 | width                  | 240px                  | See Rendering paragraph                  |
+
+
+
+
 
 # Rendering
 
