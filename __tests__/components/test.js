@@ -1,6 +1,7 @@
 import deepFreeze from 'deep-freeze'
 import renderer from 'react-test-renderer'
-import {renderDefaultButton, renderCustomDefaultButton}  from '../../src/components/'
+import {shallow} from 'enzyme'
+import {renderDefaultButton}  from '../../src/components/'
 
 describe("Test shared component functions",() => {
 
@@ -10,12 +11,21 @@ describe("Test shared component functions",() => {
             disabled: true,
             text: "bonjour", 
             backgroundColor: "red",
-            className: "", 
+            className: "test1", 
             onClickFunc: ""
         }
         deepFreeze(params)
-        const rendered = renderer.create(renderDefaultButton(params))
-        console.log(rendered.toJSON())
-        expect().toEqual({})
+        const wrapper = shallow(renderDefaultButton(params))
+        const div = wrapper.find('.test1 > .react-google-oauth-button-border > .react-google-oauth-button-iconWrapper > .react-google-oauth-button-icon')
+        expect(div.length).toEqual(1)
+        const div2 = wrapper.find('.test1')
+        expect(div2.prop('onClick')).toBeNull()
+        const span = wrapper.find(".test1 > .react-google-oauth-button-border > .react-google-oauth-button-span")
+        expect(span.text()).toEqual("bonjour")
+        
+
+
+        //console.log(div)
+        //expect(div.hasClass('test1')).toEqual(true)
     })
 })
