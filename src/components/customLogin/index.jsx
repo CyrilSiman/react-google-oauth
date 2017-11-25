@@ -22,29 +22,16 @@ class CustomGoogleLogin extends Component {
     }
 
     const auth2 = window.gapi.auth2.getAuthInstance();
-    const { onLoginSuccess, onLoginFailure } = this.props
-    const { redirectUri, onRequest, fetchBasicProfile, prompt, scope, responseType } = this.props;
-    const options = {
-      response_type: responseType,
-      redirect_uri: redirectUri,
-      fetch_basic_profile: fetchBasicProfile,
-      prompt,
-      scope,
-    };
+    const { onLoginSuccess, onLoginFailure, onRequest } = this.props
+
     onRequest();
-    if (responseType === 'code') {
-      auth2.grantOfflineAccess(options)
-        .then(
-        res => onLoginSuccess(res),
-        err => onLoginFailure(err)
-        );
-    } else {
-      auth2.signIn(options)
-        .then(
-        res => onLoginSuccess(res),
-        err => onLoginFailure(err)
-        );
-    }
+
+    auth2.signIn()
+      .then(
+      res => onLoginSuccess(res),
+      err => onLoginFailure(err)
+      );
+
   }
 
   render() {
@@ -80,13 +67,6 @@ CustomGoogleLogin.defaultProps = {
   onRequest: f => f,
   tag: "a",
   text: 'Sign in with Google',
-  scope: 'profile email',
-  responseType: 'permission',
-  prompt: '',
-  cookiePolicy: 'single_host_origin',
-  fetchBasicProfile: true,
-  isSignedIn: false,
-  uxMode: 'popup'
 };
 
 export default CustomGoogleLogin;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import invariant from 'invariant'
-import {renderDefaultButton} from '../'
+import { renderDefaultButton } from '../'
 import '../../styles.css'
 
 class GoogleLogin extends Component {
@@ -23,33 +23,20 @@ class GoogleLogin extends Component {
 
   signIn(e) {
     if (e) {
-      e.preventDefault(); // to prevent submit if used within form
+      e.preventDefault() // to prevent submit if used within form
     }
 
-    const auth2 = window.gapi.auth2.getAuthInstance();
-    const { onLoginSuccess, onLoginFailure } = this.props
-    const { redirectUri, onRequest, fetchBasicProfile, prompt, scope, responseType } = this.props;
-    const options = {
-      response_type: responseType,
-      redirect_uri: redirectUri,
-      fetch_basic_profile: fetchBasicProfile,
-      prompt,
-      scope,
-    };
+    const auth2 = window.gapi.auth2.getAuthInstance()
+    const { onLoginSuccess, onLoginFailure, onRequest } = this.props
+
     onRequest();
-    if (responseType === 'code') {
-      auth2.grantOfflineAccess(options)
-        .then(
-        res => onLoginSuccess(res),
-        err => onLoginFailure(err)
-        );
-    } else {
-      auth2.signIn(options)
-        .then(
-        res => onLoginSuccess(res),
-        err => onLoginFailure(err)
-        );
-    }
+
+    auth2.signIn()
+      .then(
+      res => onLoginSuccess(res),
+      err => onLoginFailure(err)
+      );
+
   }
 
   render() {
@@ -60,7 +47,7 @@ class GoogleLogin extends Component {
       disabled: this.props.disabled,
       className: "react-google-oauth-button-login",
       onClickFunc: this.signIn,
-      width:this.props.width
+      width: this.props.width
     })
   }
 }
@@ -83,14 +70,7 @@ GoogleLogin.defaultProps = {
   onLoginFailure: f => f,
   onLoginSuccess: f => f,
   onRequest: f => f,
-  text: 'Sign in with Google',
-  scope: 'profile email',
-  responseType: 'permission',
-  prompt: '',
-  cookiePolicy: 'single_host_origin',
-  fetchBasicProfile: true,
-  isSignedIn: false,
-  uxMode: 'popup'
+  text: 'Sign in with Google'
 };
 
 export default GoogleLogin;

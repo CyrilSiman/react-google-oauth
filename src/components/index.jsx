@@ -2,9 +2,6 @@ import React from 'react'
 
 export const renderDefaultButton = ({ width, disabled, text, backgroundColor, className, onClickFunc }) => {
 
-    //const { buttonText, backgroundColor } = this.props;
-    //const disabled = this.props.disabled;
-
     const func = disabled ? null : onClickFunc
     let style = backgroundColor ? { backgroundColor: backgroundColor } : {}
     style = width ?  {...style,width} : style

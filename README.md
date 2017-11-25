@@ -1,5 +1,3 @@
-**DEV and documentation in progress**
-
 # react-google-oauth
 
 *Directly inspired from [react-google-login](https://github.com/anthonyjgrove/react-google-login) project.*
@@ -8,11 +6,17 @@ With react-google-oauth you can quickly and easly add Login and Logout Google bu
 
 ![Google button with hover state](https://i.imgur.com/PDgUgJW.gif)
 
+
+
+
+
+
+
 # How it works
 
 This module is composed by two kind of components :
 
-- \<GoogleAPI> used to inject and initialize the Google Api with your Google client ID, follow this <a href="https://developers.google.com/identity/sign-in/web/devconsole-project" >Google's documentation to get yours</a>
+- \<GoogleAPI> used to inject and initialize the Google Api with your Google client ID, follow this [Google's documentation](https://developers.google.com/identity/sign-in/web/devconsole-project) to get yours
 - \<GoogleLogin> \<GoogleLogout> \<CustomGoogleLogin> \<CustomGoogleLogout> components used to display buttons and connect each *clickEvents* to Google Oauth Api.
 
 # Install
@@ -23,7 +27,7 @@ npm install react-google-oauth
 
 # How use it
 
-**1°) Inject and init Google API script**
+### 1°) Inject and init Google API script
 
 Add \<GoogleAPI> component in your tree
 
@@ -42,23 +46,39 @@ ReactDOM.render(
 
 By default the Google API is initialize to make a simple Oauth with profile...
 
-**Attention** : As other React component \<GoogleAPI> can have only one child
+**Caution** : As other React component \<GoogleAPI> can have only one child
 
-scope: 'profile email',
+#### GooleApi props
 
-responseType: 'permission',
+See [Google documentation](https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig) for complet values
 
-prompt: '',
+| Parameters           | Default value             | Comment                                  | Type   |
+| -------------------- | ------------------------- | ---------------------------------------- | ------ |
+| clientId             | **REQUIRED**              |                                          | String |
+| responseType         | 'permission'              |                                          | String |
+| Prompt               | ''                        | [Doc](https://developers.google.com/identity/protocols/OpenIDConnect#prompt) | String |
+| cookiePolicy         | 'single_host_origin'      |                                          | String |
+| fetchBasicProfile    | true                      | Automatically add profile and email in Scope see [Doc](https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig) | Bool   |
+| uxMode               | 'popup'                   |                                          | String |
+| hostedDomain         | None                      |                                          | String |
+| redirectUri          | None                      |                                          | String |
+| Scope                | ''                        | More scope on this [page](https://developers.google.com/identity/protocols/googlescopes) | String |
+| onUpdateSigninStatus | f => f                    | See below                                | Func   |
+| onInitFailure        | err => console.error(err) | See below                                | Func   |
 
-cookiePolicy: 'single_host_origin',
+##### onUpdateSigninStatus  - Callback
 
-fetchBasicProfile: true,
+[Doc](https://developers.google.com/api-client-library/javascript/reference/referencedocs#googleauthissignedinlistenlistener) : listen for changes in the current user's sign-in state
 
-uxMode: 'popup',
+A function that takes a boolean value. Passes `true` to this function when the user signs in, and `false` when the user signs out.
+
+##### onInitFailure - Callback
+
+The function called with an object containing an `error` property, if `GoogleAuth` failed to initialize
 
 
 
-**2°) Add a button**
+### 2°) Add a button
 
 Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
 
@@ -78,13 +98,29 @@ ReactDOM.render(
         </GoogleAPI>, document.getElementById('root'));
 ```
 
-onLoginSuccess: function called when the authentification is done. Often it's more preferable to use onUpdateSigninStatus from \<GoogleAPI>
+#### GoogleLogin params
 
-onLoginFailure: function called when a error occured. By example when a user closed the Google's popup before choice an account. This function take an object containing an error property. See <a href="https://developers.google.com/identity/sign-in/web/reference#googleauthsigninoptions" >Error Code</a> on Google's documentation for more details.
+| Callback                 | Default value          | Comment                                  |
+| ------------------------ | ---------------------- | ---------------------------------------- |
+| onLoginSuccess(response) | f => f                 | Function called when the authentification is done. Maybe it's more preferable to use onUpdateSigninStatus from \<GoogleAPI>. Fulfilled with the `GoogleUser` instance when the user successfully authenticates and grants the requested scopes. |
+| onLoginFailure(error)    | f => f                 | function called when a error occured. By example when a user closed the Google's popup before he choiced an account. This function take an object containing an error property. See <a href="https://developers.google.com/identity/sign-in/web/reference#googleauthsigninoptions" >Error Code</a> on Google's documentation for more details. |
+| onRequest()              | f => f                 | Called just before the call to Google Api Script, you can used this callback to display a loader by example. None parameter. |
+| Text                     | ' Sign in with Google' | Text displayed in button                 |
+| backgroundColor          | \#4285f4               | See Rendering paragraph                  |
+| disabled                 | False                  | See Rendering paragraph                  |
+| width                    | 240px                  | See Rendering paragraph                  |
 
-onRequest : called just before the call to Google Api Script, you can used this callback to display a loader by example. None parameter is send.
+#### GoogleLogout params
 
-
+| Callback               | Default value          | Comment                                  |
+| ---------------------- | ---------------------- | ---------------------------------------- |
+| onLogoutSuccess()      | f => f                 | Function called when the user has been signed out |
+| onLogoutFailure(error) | f => f                 | function called when a error occured.  This function take an object containing an error property. See <a href="https://developers.google.com/identity/sign-in/web/reference#googleauthsigninoptions" >Error Code</a> on Google's documentation for more details. |
+| onRequest()            | f => f                 | Called just before the call to Google Api Script, you can used this callback to display a loader by example. None parameter. |
+| Text                   | ' Sign in with Google' | Text displayed in button                 |
+| backgroundColor        | \#4285f4               | See Rendering paragraph                  |
+| disabled               | False                  | See Rendering paragraph                  |
+| width                  | 240px                  | See Rendering paragraph                  |
 
 # Rendering
 

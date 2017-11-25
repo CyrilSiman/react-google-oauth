@@ -98,7 +98,6 @@ GoogleAPI.propTypes = {
     clientId: PropTypes.string.isRequired,
     scope: PropTypes.string,
     cookiePolicy: PropTypes.string,
-    responseType: PropTypes.string,
     fetchBasicProfile: PropTypes.bool,
     prompt: PropTypes.string,
     uxMode: PropTypes.string,
@@ -108,9 +107,8 @@ GoogleAPI.propTypes = {
 };
 
 GoogleAPI.defaultProps = {
-    scope: 'profile email',
+    scope: '',
     cookiePolicy: 'single_host_origin',
-    responseType: 'permission',
     fetchBasicProfile: true,
     prompt: '',
     uxMode: 'popup',

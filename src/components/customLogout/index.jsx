@@ -32,11 +32,9 @@ class CustomGoogleLogout extends Component {
       authInstance.signOut()
         .then(
         () => {
-          //authInstance.currentUser.get().reloadAuthResponse();
           onLogoutSuccess()
         },
         () => {
-          //authInstance.currentUser.get().reloadAuthResponse();
           onLogoutFailure()
         }
         );
