@@ -1,6 +1,6 @@
 {
   "name": "react-google-oauth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Google OAuth component for React",
   "main": "dist/react-google-oauth.js",
   "scripts": {
