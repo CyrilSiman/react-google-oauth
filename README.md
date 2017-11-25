@@ -84,7 +84,7 @@ The function called with an object containing an `error` property, if `GoogleAut
 
 Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
 
-```Jsx
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {GoogleAPI,GoogleLogin,GoogleLogout} from 'react-google-oauth'
@@ -138,7 +138,7 @@ ReactDOM.render(
 
 Without parameters, buttons look like this :
 
-```
+```jsx
 <GoogleLogin />
 <GoogleLogout />
 ```
@@ -178,4 +178,34 @@ With pre-define rendering you can only change the text, the  width and the backg
 | text            | Sign out      |
 | width           | 180px         |
 | backgroundColor | \#A31515      |
+
+
+
+## \<CustomGoogleLogin> & \<CustomGoogleLogout>
+
+With CustomGoogleLogin and CustomeGoogleLogout you can custom button as you want.
+
+
+
+| Parameters | Type   | Comment                                  |
+| ---------- | ------ | ---------------------------------------- |
+| tag        | String | You can choose kind of tag use for rendering. An onClick event is attached on this tag during rendering |
+| className  | String | CSS class                                |
+
+Sample with this rendering ![](https://i.imgur.com/PQbVOHu.png)
+
+```html
+<CustomGoogleLogout tag="div" >
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" clipRule="evenodd" fillRule="evenodd" viewBox="0 0 500 500">
+	<defs><linearGradient gradientUnits="userSpaceOnUse" id="a" x1="362.554" x2="47" y1="227.99" y2="227.99"><stop offset="0" stopColor="#008BFF" /><stop offset="1" stopColor="#0af" />
+	</linearGradient></defs>
+	<g>
+		<rect fill="#D5D6D6" height="389" rx="23" ry="22" width="250" x="210" y="35" />
+		<path d="M293 35h144c13 0 23 10 23 23v327c0 13-11 26-23 23l-144-35c-12-3-23-10-23-23v-292c0-13 10-23 23-23z" fill="#f5f5f5" stroke="#434242" strokeWidth="10" />
+		<rect fill="none" height="389" rx="23" ry="22" stroke="#434242" strokeWidth="30" width="250" x="210" y="35" />
+		<path d="M359 236l-95 73c-4 2-7 3-11 1-3-2-6-5-6-9v-42h-190c-5 0-10-5-10-10v-40c0-5 4-10 10-10h190v-44c0-4 3-7 6-9 4-2 7-1 11 1l95 73c2 2 4 5 4 8s-2 6-4 8z" fill="url(#a)" stroke="#434242" strokeWidth="10" />
+	</g>
+</svg>
+</CustomGoogleLogout>
+```
 
