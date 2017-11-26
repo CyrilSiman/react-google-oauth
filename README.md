@@ -10,6 +10,24 @@ With react-google-oauth you can quickly and easly add Login and Logout Google bu
 
 
 
+- [How it works](#how-it-works)
+- [Install](#install)
+- [How use it](#how-use-it)
+  - [1- Inject and init Google API script](#1--inject-and-init-google-api-script)
+    - [GooleApi props](#gooleapi-props)
+      - [onUpdateSigninStatus  - Callback](#onupdatesigninstatus-callback)
+      - [onInitFailure - Callback](#oninitfailure-callback)
+  - [2- Add a button](#2--add-a-button)
+    - [GoogleLogin params](#googlelogin-params)
+    - [GoogleLogout params](#googlelogout-params)
+  - [3- Get informations](#3--get-informations)
+    - [googleGetBasicProfil](#googlegetbasicprofil)
+    - [googleGetAuthResponse](#googlegetauthresponse)
+- [Rendering](#rendering)
+  - [\<GoogleLogin> & \<GoogleLogout>](#googlelogin-googlelogout)
+  - [Text, Color, Width](#text-color-width)
+  - [\<CustomGoogleLogin> & \<CustomGoogleLogout>](#customgooglelogin-customgooglelogout)
+
 # How it works
 
 This module is composed by two kind of components :
@@ -25,7 +43,7 @@ npm install react-google-oauth
 
 # How use it
 
-## 1°) Inject and init Google API script
+## 1- Inject and init Google API script
 
 Add \<GoogleAPI> component in your tree
 
@@ -80,7 +98,7 @@ The function called with an object containing an `error` property, if `GoogleAut
 
 
 
-## 2°) Add a button
+## 2- Add a button
 
 Add a button component under GoogleAPI *(each button component check if it is a child of GoogleAPI, if not an error message is displayed)*
 
@@ -130,7 +148,7 @@ ReactDOM.render(
 
 
 
-## 3) Get informations
+## 3- Get informations
 
 Tow methods can help you to get informations
 
