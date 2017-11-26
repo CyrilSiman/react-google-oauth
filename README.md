@@ -130,6 +130,34 @@ ReactDOM.render(
 
 
 
+## 3) Get informations
+
+Tow methods can help you to get informations
+
+### googleGetBasicProfil
+
+```javascript
+return {id : basicProfile.getId(),
+name : basicProfile.getName(),
+givenName :basicProfile.getGivenName(),
+familyName : basicProfile.getFamilyName(),
+imageUrl : basicProfile.getImageUrl(),
+email : basicProfile.getEmail(),
+hostedDomain : authInstance.currentUser.get().getHostedDomain(),
+scopes:authInstance.currentUser.get().getGrantedScopes()}
+```
+
+### googleGetAuthResponse
+
+```javascript
+return {accessToken : authResponse.access_token,
+id_token : authResponse.id_token,
+scope : authResponse.scope,
+expiresIn : authResponse.expires_in,
+firstIssuedAt : authResponse.first_issued_at,
+expiresAt : authResponse.expires_at}
+```
+
 
 
 # Rendering
