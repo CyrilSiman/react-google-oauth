@@ -64,21 +64,21 @@ By default the Google API is initialize to make a simple Oauth with profile...
 
 **Caution** : As other React component \<GoogleAPI> can have only one child
 
-### GooleApi props
+### GooleAPI props
 
-See [Google documentation](https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig) for complet values
+See [Google documentation](https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig) for complete values
 
 | Parameters           | Default value             | Comment                                  | Type   |
 | -------------------- | ------------------------- | ---------------------------------------- | ------ |
 | clientId             | **REQUIRED**              |                                          | String |
 | responseType         | 'permission'              |                                          | String |
-| Prompt               | ''                        | [Doc](https://developers.google.com/identity/protocols/OpenIDConnect#prompt) | String |
+| prompt               | ''                        | [Doc](https://developers.google.com/identity/protocols/OpenIDConnect#prompt) | String |
 | cookiePolicy         | 'single_host_origin'      |                                          | String |
 | fetchBasicProfile    | true                      | Automatically add profile and email in Scope see [Doc](https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig) | Bool   |
 | uxMode               | 'popup'                   |                                          | String |
 | hostedDomain         | None                      |                                          | String |
 | redirectUri          | None                      |                                          | String |
-| Scope                | ''                        | More scope on this [page](https://developers.google.com/identity/protocols/googlescopes) | String |
+| scope                | ''                        | More scope on this [page](https://developers.google.com/identity/protocols/googlescopes) | String |
 | onUpdateSigninStatus | f => f                    | See below                                | Func   |
 | onInitFailure        | err => console.error(err) | See below                                | Func   |
 
