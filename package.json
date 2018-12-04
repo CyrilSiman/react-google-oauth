@@ -4,7 +4,7 @@
   "description": "A Google OAuth component for React",
   "main": "dist/react-google-oauth.js",
   "scripts": {
-    "start": "webpack --config ./config/webpack.config.dev.js",
+    "start": "webpack --config ./webpack.config.dev.js",
     "build": "BABEL_ENV=development webpack --config ./webpack.config.dev.js --watch",
     "test": "jest --coverage"
   },
