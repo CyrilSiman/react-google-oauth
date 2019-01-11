@@ -12,7 +12,10 @@ export const CustomGoogleLogout = _CustomGoogleLogout
 
 export const googleGetAuthResponse =  () => {
     let returnObj =  {}
-
+    
+    if (typeof(window) === 'undefined')
+        return returnObj;
+    
     //Lib loaded
     if (window.gapi && window.gapi.auth2) {
         //Lib correctly init
@@ -39,6 +42,10 @@ export const googleGetAuthResponse =  () => {
 
 export const googleGetBasicProfil = () => {
     let returnObj =  {}
+    
+    if (typeof(window) === 'undefined')
+        return returnObj;
+    
     //Lib loaded
     if (window.gapi && window.gapi.auth2) {
         //Lib correctly init
